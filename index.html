@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burak Gökçınar | Yazılım Geliştiricisi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --main-bg: #181c24;
+            --accent: #00c3ff;
+            --accent2: #ff6a00;
+            --text: #f5f6fa;
+            --card-bg: #23283b;
+            --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, var(--main-bg) 60%, var(--accent) 100%);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        header {
+            padding: 40px 0 20px 0;
+            text-align: center;
+            animation: fadeInDown 1s cubic-bezier(.68, -0.55, .27, 1.55);
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        header p {
+            font-size: 1.3rem;
+            margin-top: 10px;
+            color: #b2becd;
+            letter-spacing: 1px;
+        }
+
+        nav {
+            margin: 30px 0 40px 0;
+            text-align: center;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            margin: 0 18px;
+            font-weight: 500;
+            font-size: 1.1rem;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        nav a:after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            transition: width .3s;
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        nav a:hover:after {
+            width: 100%;
+        }
+
+        section {
+            max-width: 900px;
+            margin: 60px auto;
+            background: var(--card-bg);
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+            padding: 40px 32px;
+            animation: fadeInUp 1.2s cubic-bezier(.68, -0.55, .27, 1.55);
+        }
+
+        section:not(:first-of-type) {
+            margin-top: 40px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 18px;
+            color: var(--accent);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            margin-top: 10px;
+        }
+
+        .skill {
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            color: #fff;
+            padding: 10px 22px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+
+        .skill:hover {
+            transform: scale(1.08) rotate(-2deg);
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            margin-top: 18px;
+        }
+
+        .project-card {
+            background: #20243a;
+            border-radius: 14px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.13);
+            padding: 22px 18px;
+            transition: transform 0.25s, box-shadow 0.25s;
+            border-left: 4px solid var(--accent);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 8px 32px rgba(0, 195, 255, 0.18);
+            border-left: 4px solid var(--accent2);
+        }
+
+        .project-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: var(--accent);
+        }
+
+        .project-card p {
+            color: #b2becd;
+            font-size: 1rem;
+        }
+
+        .project-card a {
+            display: inline-block;
+            margin-top: 10px;
+            color: var(--accent2);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .project-card a:hover {
+            color: var(--accent);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 18px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            background: #23283b;
+            color: var(--text);
+            font-size: 1rem;
+            resize: none;
+        }
+
+        .contact-form button {
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            color: #fff;
+            border: none;
+            padding: 12px 0;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .contact-form button:hover {
+            background: linear-gradient(90deg, var(--accent2), var(--accent));
+            transform: scale(1.04);
+        }
+
+        footer {
+            text-align: center;
+            color: #b2becd;
+            margin: 40px 0 20px 0;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            animation: fadeIn 1.5s;
+        }
+
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-40px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 700px) {
+            section {
+                padding: 24px 8px;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Burak Gökçınar</h1>
+        <p>Yazılım Geliştiricisi | Web & Mobil | Modern Çözümler</p>
+    </header>
+    <nav>
+        <a href="#hakkimda">Hakkımda</a>
+        <a href="#yetenekler">Yetenekler</a>
+        <a href="#projeler">Projeler</a>
+        <a href="#iletisim">İletişim</a>
+    </nav>
+    <div style="text-align:center; margin-bottom: 10px;">
+        <a href="https://github.com/burakgokcinar" target="_blank" title="GitHub"
+            style="margin:0 10px;display:inline-block;">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub"
+                width="28" height="28" style="vertical-align:middle;filter:invert(1);">
+        </a>
+        <a href="https://www.linkedin.com/in/burak-gokcinar" target="_blank" title="LinkedIn"
+            style="margin:0 10px;display:inline-block;">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn"
+                width="28" height="28" style="vertical-align:middle;filter:invert(1);">
+        </a>
+        <a href="https://twitter.com/burakgokcinar" target="_blank" title="Twitter"
+            style="margin:0 10px;display:inline-block;">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/twitter/twitter-original.svg" alt="Twitter"
+                width="28" height="28" style="vertical-align:middle;filter:invert(1);">
+        </a>
+        <a href="mailto:burakgokcinar@gmail.com" target="_blank" title="E-posta"
+            style="margin:0 10px;display:inline-block;">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" alt="E-posta"
+                width="28" height="28" style="vertical-align:middle;filter:invert(1);">
+        </a>
+    </div>
+    <section id="hakkimda">
+        <h2>Hakkımda</h2>
+        <p>Merhaba! Ben Burak Gökçınar. <br /><br />
+            Sürekli öğrenmeyi ve hızla değişen teknolojilere uyum sağlamayı bir yaşam felsefesi haline getirdim. React
+            Native, Node.js, Express.js, Expo CLI, Expo OTA, Expo EAS, React.js/Next.js ve Electron.js gibi modern
+            teknolojilerle yenilikçi ve kullanıcı odaklı projeler geliştirme konusunda deneyimliyim. Teknik uzmanlığım
+            sayesinde kullanıcıların günlük yaşamlarını kolaylaştıran işlevsel ve pratik çözümler üretmeyi hedefliyorum.
+            <br /><br />
+
+            Prisma ORM ile PostgreSQL ve MongoDB gibi güçlü veritabanı yönetim sistemleri üzerinde çalışarak veri
+            modelleme ve yönetimi alanında derinlemesine bilgi sahibiyim. Ayrıca Firebase, Supabase, Better Auth ve
+            Clerk gibi
+            kullanıcı yönetim platformlarında geniş kapsamlı tecrübelerim bulunuyor. Bununla beraber Vexo, Sentry gibi
+            modern araçlar ile hata, performans ve analitik izleme deneyimliyorum. Bu araçları etkin bir şekilde
+            kullanarak projelere ölçeklenebilirlik ve esneklik kazandırıyorum. <br /><br />
+
+            Ekip çalışmasına olan yatkınlığım, teknik becerilerimle birleşerek projelerin başarıya ulaşmasına katkı
+            sağlıyor. Motivasyonum ve yenilikçi yaklaşımım, her projede hem işlevselliği hem de kullanıcı deneyimini ön
+            planda tutmama yardımcı oluyor.
+        </p>
+    </section>
+    <section id="yetenekler">
+        <h2>Yetenekler</h2>
+        <div class="skills">
+            <div class="skill">React Native</div>
+            <div class="skill">Expo CLI</div>
+            <div class="skill">JavaScript</div>
+            <div class="skill">TypeScript</div>
+            <div class="skill">Express.js</div>
+            <div class="skill">React</div>
+            <div class="skill">Next.js</div>
+            <div class="skill">Node.js</div>
+            <div class="skill">HTML5</div>
+            <div class="skill">CSS3</div>
+            <div class="skill">Sass</div>
+            <div class="skill">TailwindCSS</div>
+            <div class="skill">MongoDB</div>
+            <div class="skill">PostgreSQL</div>
+            <div class="skill">MSSQL</div>
+            <div class="skill">Realm | SQLite</div>
+            <div class="skill">Git</div>
+            <div class="skill">Figma</div>
+            <div class="skill">Mobil Uygulama Geliştirme</div>
+            <div class="skill">Prisma ORM</div>
+            <div class="skill">Expo OTA</div>
+            <div class="skill">Expo EAS</div>
+            <div class="skill">Electron.js</div>
+            <div class="skill">Vexo</div>
+            <div class="skill">Sentry</div>
+        </div>
+    </section>
+    <section id="projeler">
+        <h2>Projeler</h2>
+        <div style="text-align:center; margin-bottom:18px;">
+            <span
+                style="display:inline-block; background:linear-gradient(90deg, var(--accent), var(--accent2)); color:#fff; font-weight:700; border-radius:20px; padding:8px 22px; font-size:1.1rem; box-shadow:0 2px 8px rgba(0,0,0,0.10); letter-spacing:1px;">+35'den
+                fazla proje ve uygulama</span>
+        </div>
+        <div class="projects">
+            <div class="project-card">
+                <h3>KioMobile</h3>
+                <p>KioMobile Uranus uygulaması, KIO Enerji Yönetim Sisteminin yardımcı bir aracıdır. KIO web
+                    uygulamasının özellikleri bir mobil uygulamada görülebilir. KioMobile uygulaması, KIO web
+                    uygulamasını SAAS veya şirket içi kurulum olarak kullanan her iki müşteri için de kullanılabilir.
+                </p>
+                <a href="#" target="_blank">Projeye Git</a>
+            </div>
+            <div class="project-card">
+                <h3>Biletara</h3>
+                <p>biletara.com, internet üzerinden şehirlerarası yolculuk alanında hizmet gösteren firmanın iOS &
+                    Android mobil uygulaması geliştirildi.</p>
+                <a href="#" target="_blank">Projeye Git</a>
+            </div>
+            <div class="project-card">
+                <h3>Tahmin Futbol - Canlı Analiz</h3>
+                <p>Futbol live api datalarının işlenerek kullanıma sunulduğu, haftalık, aylık ve yıllık olarak abone
+                    mantığı ile çalışan ve geliştirilebilir bir React Native destekli mobil uygulamadır.</p>
+                <a href="#" target="_blank">Projeye Git</a>
+            </div>
+            <div class="project-card">
+                <h3>Zed IPTV Player</h3>
+                <p>Geleneksel TV kanallarından bıktınız mı? İstediğiniz içeriğe istediğiniz zaman ulaşabilmek ister
+                    misiniz? İnternet Protokol Televizyonu (IPTV), İnternet protokollerini kullanarak geniş bant
+                    bağlantı üzerinden televizyon programları hizmeti sağlar.</p>
+                <a href="#" target="_blank">Projeye Git</a>
+            </div>
+            <div class="project-card">
+                <h3>Aşçı İlanları</h3>
+                <p>Bu çalışmada özellikle COVID-19 döneminde yemek/gıda sektöründe yaşanan dalgalanmalar sonucunda,
+                    işletme veya diğer iş veren insanların çeşitli yemek sektörü branşlarında kayıt olan kişi ve/veya
+                    kişilere ulaştığı kısaca gıda sektörü iş platformudur.</p>
+                <a href="#" target="_blank">Projeye Git</a>
+            </div>
+            <div class="project-card">
+                <h3>TV Kumandası - Uzaktan Kumanda</h3>
+                <p>Samsung Smart TV ve LG Web OS TV sistemleri için basit ve kullanışlı uzaktan kumanda entegrasyonudur.
+                </p>
+                <a href="#" target="_blank">Projeye Git</a>
+            </div>
+        </div>
+    </section>
+    <section id="iletisim">
+        <h2>İletişim</h2>
+        <form class="contact-form"
+            onsubmit="event.preventDefault(); alert('Teşekkürler! En kısa sürede dönüş yapacağım.');">
+            <input type="text" placeholder="Adınız" required>
+            <input type="email" placeholder="E-posta" required>
+            <textarea rows="4" placeholder="Mesajınız" required></textarea>
+            <button type="submit">Gönder</button>
+        </form>
+    </section>
+    <footer>
+        © <span id="year"></span> Burak Gökçınar | Tüm hakları saklıdır.
+    </footer>
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>
